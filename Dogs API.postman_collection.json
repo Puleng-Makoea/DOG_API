@@ -1,0 +1,159 @@
+{
+	"info": {
+		"_postman_id": "264554d9-da61-4c9e-8832-e05b8e368b26",
+		"name": "Dogs API",
+		"description": "This is the dogs Api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get  List of all Breeds",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6cecb048-9d9b-4818-a8c3-dcd2e18428ac",
+						"exec": [
+							"tests[\"Verify-Status Code is 200\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://dog.ceo/api/breeds/list/all",
+					"protocol": "https",
+					"host": [
+						"dog",
+						"ceo"
+					],
+					"path": [
+						"api",
+						"breeds",
+						"list",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Verify Retriever Breed is within the list",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4ea0461d-ca3f-47f0-a3de-b85294872108",
+						"exec": [
+							"",
+							"pm.test(\"Verify-Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});tests[\"Verify - Retreiver is within the list\"] = responseBody.has(\"retriever\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://dog.ceo/api/breeds/list/all",
+					"protocol": "https",
+					"host": [
+						"dog",
+						"ceo"
+					],
+					"path": [
+						"api",
+						"breeds",
+						"list",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Display Sub-Breeds for Retriever",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f030ebac-575f-4ffa-9815-797cc3501c0c",
+						"exec": [
+							"pm.test(\"Verify-Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Body Verification\", function () {",
+							"    pm.response.to.have.body('{\"message\":[\"chesapeake\",\"curly\",\"flatcoated\",\"golden\"],\"status\":\"success\"}');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://dog.ceo/api/breed/retriever/list",
+					"protocol": "https",
+					"host": [
+						"dog",
+						"ceo"
+					],
+					"path": [
+						"api",
+						"breed",
+						"retriever",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Random Image Or Link For Sub-Breed \"Golden\"",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fb02119d-8227-4b74-928c-206c31f26756",
+						"exec": [
+							"pm.test(\"Verify-Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://dog.ceo/api/breed/retriever/golden/images/random",
+					"protocol": "https",
+					"host": [
+						"dog",
+						"ceo"
+					],
+					"path": [
+						"api",
+						"breed",
+						"retriever",
+						"golden",
+						"images",
+						"random"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
